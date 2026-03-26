@@ -7,11 +7,9 @@ int main() {
     float a, b, c;
     cout<<"Enter the length of 3 sides: "<<endl;
     cin>>a>>b>>c;
-    if (IsValidTriangle(a, b, c))
-    {
+    if (IsValidTriangle(a, b, c)) {
         cout<<"The triangle is valid"<<endl;
-    } else
-    {
+    } else {
         cout<<"The triangle is not valid"<<endl;
     }
 }
