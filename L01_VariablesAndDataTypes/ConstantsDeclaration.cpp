@@ -8,7 +8,7 @@ constexpr int SECONDS_PER_DAY = 24 * 60 * 60;
 
 int main ()
 {
-    std::cout<<"Circle area with radius of 5 is: "<<5*5*PI<<endl;
-    std::cout<<"My name is "<<MY_NAME<<endl;
-    std::cout<<"Total seconds in one day are: "<<SECONDS_PER_DAY<< "(s)"<<endl;
+    cout<<"Circle area with radius of 5 is: "<<5*5*PI<<endl;
+    cout<<"My name is "<<MY_NAME<<endl;
+    cout<<"Total seconds in one day are: "<<SECONDS_PER_DAY<< "(s)"<<endl;
 }

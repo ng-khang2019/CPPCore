@@ -1,6 +1,5 @@
 #include <iostream>
 #include <string>
-using namespace std;
 
 int main ()
 {
@@ -47,19 +46,19 @@ int main ()
     bool myBoolean2 = false;
 
     // string type
-    string words = "Apple";
+    std::string words = "Apple";
 
     // Print out
-    std::cout<<"Char type: "<<word<<endl;
-    std::cout<<"Short integer: "<<shortVal<<endl;
-    std::cout<<"Integer type: "<<intVal<<endl;
-    std::cout<<"Long integer type: "<<longVal<<endl;
-    std::cout<<"Long long integer type: "<<longlongVal<<endl;
-    std::cout<<"Float type: "<<floatVal<<endl;
-    std::cout<<"Double type: "<<doubleVal<<endl;
-    std::cout<<"Long double type: "<<ldoubleVal<<endl;
-    std::cout<<"Boolean type true value: "<<myBoolean<<" - means true "<<endl;
-    std::cout<<"Boolean type false value: "<<myBoolean2<<" - means false"<<endl;
-    std::cout<<"Compound type or string type: "<<words<<endl;
+    std::cout<<"Char type: "<<word<<std::endl;
+    std::cout<<"Short integer: "<<shortVal<<std::endl;
+    std::cout<<"Integer type: "<<intVal<<std::endl;
+    std::cout<<"Long integer type: "<<longVal<<std::endl;
+    std::cout<<"Long long integer type: "<<longlongVal<<std::endl;
+    std::cout<<"Float type: "<<floatVal<<std::endl;
+    std::cout<<"Double type: "<<doubleVal<<std::endl;
+    std::cout<<"Long double type: "<<ldoubleVal<<std::endl;
+    std::cout<<"Boolean type true value: "<<myBoolean<<" - means true "<<std::endl;
+    std::cout<<"Boolean type false value: "<<myBoolean2<<" - means false"<<std::endl;
+    std::cout<<"Compound type or string type: "<<words<<std::endl;
     return 0;
 }
