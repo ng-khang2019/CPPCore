@@ -12,6 +12,7 @@ int main()
 
     int area = SQUARE_AREA(5);
     cout<< "Square area with side of 5: " << area << endl;
+
     int max = MAX(20,5);
     cout<< "Max number between 20 and 5 is " << max << endl;
 
