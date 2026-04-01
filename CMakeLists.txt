@@ -14,6 +14,6 @@ set(CMAKE_CXX_STANDARD 20)
 foreach(file ${SOURCE_FILES})
     get_filename_component(exe_name ${file} NAME_WE)
     add_executable(${exe_name} ${file})
-    message(STATUS "Đã thêm bài tập: ${exe_name}")
+    message(STATUS "File added: ${exe_name}")
 endforeach()
 
