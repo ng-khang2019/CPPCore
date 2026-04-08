@@ -23,18 +23,5 @@ int main()
     // hello1 = "Morning"; causes error
     hello2 = "Goodbye";
     cout<<endl<<endl;
-
-    string myName;
-    cout<<"Nhập tên: ";
-    // cin>>myName;
-    getline(cin, myName);
-
-    char lecturer[30];
-    cout<<"Tên giảng viên: ";
-    cin.getline(lecturer,29);
-
-    cout<<"Tên của bạn là: "<<myName<<endl;
-    cout<<"Tên của giảng viên: "<<lecturer;
-    cin.get();
     return 0;
 }
