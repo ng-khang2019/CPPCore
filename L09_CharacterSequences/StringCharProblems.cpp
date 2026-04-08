@@ -4,6 +4,9 @@ using namespace std;
 
 const string name1 = "Nguyen Van Dat";
 const string name2 = "Nguyễn Văn Đạt";
+const string name3 = "Le Dang Khoa";
+const string name4 = "Nguyen Minh Khang";
+
 
 int main()
 {
@@ -23,5 +26,6 @@ int main()
     // hello1 = "Morning"; causes error
     hello2 = "Goodbye";
     cout<<endl<<endl;
+    cin.get();
     return 0;
 }
