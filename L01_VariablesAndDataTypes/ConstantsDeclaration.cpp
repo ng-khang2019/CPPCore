@@ -4,6 +4,7 @@ using namespace std;
 
 const float PI = 3.1415926535f;
 const string MY_NAME = "Khang";
+// A constant formed by an expression
 constexpr int SECONDS_PER_DAY = 24 * 60 * 60;
 
 int main ()
