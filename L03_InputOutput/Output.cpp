@@ -13,19 +13,19 @@ int main()
     cout<<"Nhập tên đầy đủ: ";
     getline(cin, myName);
 
-    // char lecturer1[30], lecturer2[30], lecturer3[30];
-    // cout<<"Nhập tên giảng viên môn Lập Trình: ";
-    // cin.getline(lecturer1,29);
-    // cout<<"Nhập tên giảng viên môn Giải Tích: ";
-    // fgets(lecturer2,29,stdin); // fgets is SAFE and Recommended
-    // cout<<"Nhập tên giảng viên môn Đại Số: ";
-    // fgets(lecturer3,29,stdin);
-    //
+    char lecturer1[30], lecturer2[30], lecturer3[30];
+    cout<<"Nhập tên giảng viên môn Lập Trình: ";
+    cin.getline(lecturer1,29);
+    cout<<"Nhập tên giảng viên môn Giải Tích: ";
+    fgets(lecturer2,29,stdin); // fgets is SAFE and Recommended
+    cout<<"Nhập tên giảng viên môn Đại Số: ";
+    fgets(lecturer3,29,stdin);
+
     cout<<"Tên: "<<myName<<endl;
     cout<<"MSSV: "<<id<<endl;
-    // cout<<"GV Lập Trình: "<<lecturer1<<endl;
-    // cout<<"GV Giải Tích: "<<lecturer2<<endl;
-    // cout<<"GV Đại Số : "<<lecturer3<<endl;
+    cout<<"GV Lập Trình: "<<lecturer1<<endl;
+    cout<<"GV Giải Tích: "<<lecturer2<<endl;
+    cout<<"GV Đại Số : "<<lecturer3<<endl;
     cin.get();
     return 0;
 }
