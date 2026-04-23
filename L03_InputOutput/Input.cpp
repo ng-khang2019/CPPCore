@@ -35,12 +35,19 @@ int main()
     char tutorName[50];
     cin.getline(tutorName,40);
 
+    // fgets(variable,size,stdin) is recommended for its type safety and size check
+    // gets() was commonly used before but is now deprecated due to its unsafe memory allocation
+    cout<<"Enter your campus area: ";
+    char campus[30];
+    fgets(campus,30,stdin);
+
     cout<<"Student ID: "<<id<<endl;
-    cout<<"Phone Number: "<<phoneNumber<<endl;
-    cout<<"Unit Code: "<<unitCode<<endl;
-    cout<<"Room Code: "<<roomCode<<endl;
-    cout<<"Full Name: "<<myName<<endl;
-    cout<<"Tutor Name: "<<tutorName<<endl;
+    cout<<"Phone number: "<<phoneNumber<<endl;
+    cout<<"Unit code: "<<unitCode<<endl;
+    cout<<"Room code: "<<roomCode<<endl;
+    cout<<"Full name: "<<myName<<endl;
+    cout<<"Tutor name: "<<tutorName<<endl;
+    cout<<"Campus: "<<campus<<endl;
 
     return 0;
 }
