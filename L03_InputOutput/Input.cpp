@@ -24,8 +24,12 @@ int main()
     scanf("%s - %s", &unitCode,&roomCode);
 
     // getline(cin,variable) is used to input space included string (mutiples words)
-    // Remember to use cin.ignore() to skip the "\n" after the usage scanf() or cin otherwise
-    // getline() will take that "\n" character as an input
+    /*
+     * Using getline() right after cin will create a bug since getline
+     * reads the Enter character '\n' in the buffer cache, from cin.
+     * To ignore '\n' from the above cin command, use cin.ignore().
+     * This will skip '\n' character.
+     */
     string myName;
     cin.ignore();
     cout<<"Enter your full name: ";
