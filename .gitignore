@@ -1,0 +1,54 @@
+# IDE/project metadata
+.idea/
+
+# XML files
+*.xml
+
+# CMake/build output
+cmake-build-*/
+build/
+out/
+
+# Compiled C/C++ artifacts
+*.o
+*.obj
+*.a
+*.lib
+*.so
+*.dylib
+*.dll
+*.exe
+*.out
+*.app
+
+# Local executables produced from lessons/exercises
+/Draft
+/Main
+/L01_VariablesAndDataTypes/DataTypes
+/L01_VariablesAndDataTypes/SizeOfDataTypes
+/L02_Operators/FloatingPointNumbers
+/L02_Operators/Exercises/Ex01_TriangleArea
+/L02_Operators/Exercises/Ex02_AverageMark
+/L03_InputOutput/Input
+/L03_InputOutput/Output
+/L04_ConstantsAndDefine/ConstantsDeclaration
+/L04_ConstantsAndDefine/Define
+/L05_Enums/Enums
+/L06_ConditionalStatements/Exercises/Ex03_TriangleValidation
+/L06_ConditionalStatements/Exercises/Ex04_LeapYear
+/L06_ConditionalStatements/IfElse
+/L08_NameVisibility/examples
+/L09_Functions/examples
+/L10_OverloadingAndTemplates/examples
+/L12_Arrays/examples
+/L13_Pointers/IntroductionToPointers
+/L13_Pointers/PassPyValue
+/L13_Pointers/Pointers
+/L13_Pointers/PointersOfIntegersAndString
+/L14_CharacterSequences/CharactersAndString
+/L14_CharacterSequences/StringCharProblems
+/L14_CharacterSequences/examples
+/L15_Vector/examples
+/ProblemSets/UIT-Homeworks/Week4-MidTerm/Problem*
+/ProblemSets/UIT-Homeworks/Week5/Functions/Ex*
+/ProblemSets/UIT-Homeworks/Week5/Recursion/Exercises
