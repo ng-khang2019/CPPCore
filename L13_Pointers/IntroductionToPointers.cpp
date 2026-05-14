@@ -4,7 +4,7 @@ using namespace std;
 int main ()
 {
     int firstvalue, secondvalue;
-    int *mypointer;
+    int* mypointer;
 
     mypointer = &firstvalue;
     *mypointer = 10;
@@ -18,6 +18,6 @@ int main ()
      * to "nullptr" which means nothing.
      */
 
-    int *p = nullptr;
+    int* p = nullptr;
     return 0;
 }
