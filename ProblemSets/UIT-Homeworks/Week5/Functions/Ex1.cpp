@@ -1,4 +1,6 @@
 #include <iostream>
+#include <iomanip>
+#include <math.h>
 using namespace std;
 
 class Exercises1
@@ -67,12 +69,16 @@ public:
     }
 
     // 1.f
-    void sortFour(int a, int b, int c, int d)
+    void sortFour(int& a, int& b, int& c, int& d)
     {
-        if (a<b) swap(a,b);
-        if (c<d) swap(c,d);
-        if (a<c) swap(a,c);
-        if (b<d) swap(b,d);
+        if (a>b) swap(a,b);
+        if (a>c) swap(a,c);
+        if (a>d) swap(a,d);
+
+        if (b>c) swap(b,c);
+        if (b>d) swap(b,d);
+
+        if (c>d) swap(c,d);
         cout<<a<<" "<<b<<" "<<c<<" "<<d<<endl;
     }
 
@@ -80,5 +86,13 @@ public:
 
 int main()
 {
-
+    int a = 10, b = 20, c = 15, d = 5;
+    cout<<"a, b, c, d: "<<a<<" "<<b<<" "<<c<<" "<<d<<endl;
+    cout<<"Min of "<<a<<" and "<<b<<" is "<<Exercises1().minOfTwo(a,b)<<endl;
+    cout<<"Min of "<<c<<" and "<<d<<" is "<<Exercises1().minOfTwo(c,d)<<endl;
+    cout<<"Min of a, b, c and d is "<<Exercises1().minOfFour(a,b,c,d)<<endl;
+    swap(a,b);
+    cout<<"Swap a and b: "<<a<<" "<<b<<endl;
+    Exercises1().sortFour(a,b,c,d);
+    cout<<"Sort a, b, c and d: "<<a<<" "<<b<<" "<<c<<" "<<d<<endl;
 }
