@@ -1,4 +1,4 @@
-# Comprehensive Guide to Pointers in C++
+# Guide to Pointers in C++
 
 This guide explains the fundamental concepts of pointers, the address-of operator (`&`), and the dereference operator (`*`) in C++.
 
@@ -86,8 +86,6 @@ int main() {
 1.  **Initialize Pointers**: Always initialize pointers. If you don't have an address yet, use `nullptr`:
     ```cpp
     int* p = nullptr;
-
-```
 2.  **Pointer Type**: A pointer's type must match the variable it points to (`int*` for `int`, `double*` for `double`).
 3.  **Dangling Pointers**: Never use a pointer after the memory it points to has been deleted or goes out of scope.
 
