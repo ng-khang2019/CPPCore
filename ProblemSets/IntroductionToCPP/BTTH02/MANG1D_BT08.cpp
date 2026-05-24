@@ -1,20 +1,35 @@
 #include <iostream>
 using namespace std;
-int sum(int arr[],int &n)
+void xoaGiaTri(int arr[],int &n, int &v, int &count)
 {
-    cout<<"Nhap so phan tu muon xet"<<endl;
+    cout<<"Nhap vao so phan tu muon xet"<<endl;
     cin>>n;
-    int sum = 0;
-    for (int i = 0; i < n; i++)
+    cout<<"Nhap vao gia tri muon xoa"<<endl;
+    cin>>v;
+    int slow = 0, fast = 0;
+
+    for (; fast < n; fast++)
     {
-        sum += arr[i];
+        if (arr[fast] == v) count++;
+        if (arr[fast] != v)
+        {
+            int temp = arr[fast];
+            arr[fast] = arr[slow];
+            arr[slow] = temp;
+            slow++;
+        }
     }
-    return sum;
 }
+
 int main()
 {
-    int n;
-    int arr[] = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15};
-    cout<<sum(arr,n)<<endl;
+    int count = 0;
+    int n, v;
+    int arr[] = {1,2,3,4,1,6,7,8,1,10,1,12,1,14,15};
+    xoaGiaTri(arr, n, v, count);
+    for (int i = 0; i < n-count; i++)
+    {
+        cout<<arr[i]<<" ";
+    }
     return 0;
 }
