@@ -1,102 +1,129 @@
 #include <iostream>
-#include <vector> // 36. Arrays vs Vectors
+#include <iomanip>
+#include <vector>
+#include <random>
+#include <array>
 
-// 13. Passing Arrays to Functions
-void printArray(int arr[], int size) {
-    for (int i = 0; i < size; i++) {
-        std::cout << arr[i] << " ";
-    }
-    std::cout << std::endl;
-}
+using namespace std;
 
-// 14. Returning Arrays from Functions
-// Normal arrays cannot be returned directly, so we use pointers (dynamic arrays)
-int* createDynamicArray(int size) {
+int* createRandomElementsArray(int size) {
+    srand(time(NULL));
     int* newArr = new int[size];
     for (int i = 0; i < size; i++) {
-        newArr[i] = (i + 1) * 10;
+        newArr[i] = rand() % 101;
     }
     return newArr;
 }
 
-// 19. Searching in Arrays (Linear Search)
-int linearSearch(int arr[], int size, int target) {
+void inputArray(int arr[], int size)
+{
     for (int i = 0; i < size; i++) {
-        if (arr[i] == target) {
-            return i; // Found
-        }
-    }
-    return -1; // Not found
-}
-
-// 20. Sorting Arrays (Bubble Sort)
-void bubbleSort(int arr[], int size) {
-    for (int i = 0; i < size; i++) {
-        for (int j = 0; j < size - 1 - i; j++) {
-            if (arr[j] > arr[j + 1]) {
-                std::swap(arr[j], arr[j + 1]);
-            }
-        }
+        cin >> arr[i];
     }
 }
 
-// 32. Passing 2D Arrays to Functions
+void printArray(int arr[], int size) {
+    for (int i = 0; i < size; i++) {
+        cout << arr[i] << " ";
+    }
+    cout << std::endl;
+}
+
 void print2DMatrix(int matrix[][3], int rows) {
     for (int i = 0; i < rows; i++) {
         for (int j = 0; j < 3; j++) {
-            std::cout << matrix[i][j] << " ";
+            cout << matrix[i][j] << " ";
         }
-        std::cout << std::endl;
+        cout << endl;
     }
 }
 
 int main() {
-    std::cout << "=== 1D Arrays ===" << std::endl;
+    std::cout << "\n--- Basic 1D Array Operations ---" << std::endl;
+
+    // Declaration
+    int numb[10];
     
-    // 5. Array Declaration & 6. Initialization
+    // Declaration & Initialization
     int numbers[5] = {10, 20, 30, 40, 50};
+
+    // Auto length detection
+    int numbers2[] = {10, 20, 30, 40};
     
-    // 10. Array Size
+    // Array Size
     int size = sizeof(numbers) / sizeof(numbers[0]);
-    std::cout << "Array size: " << size << std::endl;
+    // Or
+    int size2 = std::size(numbers);
+    cout << "Array size: " << ((size == size2) ? size : size2 )<< endl;
+    /*
+     * Important: The dynamic size trick sizeof(arr) / sizeof(arr[0]) works only
+     * where the raw array object itself is visible within scope. If you hand your
+     * array off to an external function, it immediately decays down to a simple
+     * tracking pointer. sizeof on that parameter will simply measure the platform
+     * pointer size, ruining your calculations
+     */
     
-    // 8. Updating Array Elements
-    numbers[1] = 25; // Update element at index 1
-    
-    // 11. Traversing Arrays (Range-based for loop)
-    std::cout << "Traversing array: ";
-    for (int val : numbers) {
-        std::cout << val << " ";
+    // Updating Array Elements
+    numbers[1] = 25;
+
+    // Arrays and Pointers
+    // Formula to access element at index i using pointer: ai = *(arr + i)
+    cout << "Pointer access (arr + 1): " << *(numbers + 1) << endl;
+
+    // Traversing using tradition for loop
+    cout << "Traversing array using tradition for loop: ";
+    for (int i = 0; i < size; i++)
+    {
+        cout << numbers[i] << " ";
     }
-    std::cout << std::endl;
+    cout << endl;
     
-    // 16. Arrays and Pointers
-    std::cout << "Pointer access (arr + 2): " << *(numbers + 2) << std::endl;
+    // Traversing using range-based for loop
+    cout << "Traversing array using range-based for loop: ";
+    for (int val : numbers) {
+        cout << val << " ";
+    }
+    cout << endl;
 
-    std::cout << "\n--- Array Operations ---" << std::endl;
-    int unsortedArr[5] = {5, 2, 8, 1, 3};
-    std::cout << "Unsorted: ";
-    printArray(unsortedArr, 5);
-    
-    bubbleSort(unsortedArr, 5);
-    std::cout << "Sorted: ";
-    printArray(unsortedArr, 5);
-    
-    int target = 8;
-    int index = linearSearch(unsortedArr, 5, target);
-    std::cout << "Linear search for " << target << " found at index: " << index << std::endl;
+    // Traversing using pointer increment
+    cout << "Traversing array using pointer increment: ";
+    for (int* ptr = numbers; ptr < numbers + size; ptr++)
+    {
+        cout << *ptr << " ";
+    }
+    cout << endl;
 
-    std::cout << "\n--- Dynamic 1D Arrays ---" << std::endl;
-    int dynSize = 3;
-    int* dynArr = createDynamicArray(dynSize);
-    std::cout << "Dynamic array: ";
-    for (int i = 0; i < dynSize; i++) std::cout << dynArr[i] << " ";
-    std::cout << std::endl;
+    // Traversing using pointer arithmetic
+    cout << "Traversing array using pointer arithmetic: ";
+    for (int i = 0; i < size; i++)
+    {
+        cout << *(numbers + i) << " ";
+    }
+    cout << endl;
+
+    // Create an array with random elements
+    int dynSize = 10;
+    int* dynArr = createRandomElementsArray(dynSize);
+    cout << "Random elements array: ";
+    printArray(dynArr, dynSize);
+    cout << endl;
+
+    // Input elements
+    cout << "Input elements: ";
+    int arr[dynSize];
+    inputArray(arr, dynSize);
+    cout << "Arrays: ";
+    printArray(arr, dynSize);
+    cout << endl;
+
+    // Free an array memory
     delete[] dynArr; // Free memory!
+    cout << "Free up an array: ";
 
-    std::cout << "\n=== 2D Arrays ===" << std::endl;
+
+    std::cout << "\n--- 2D Arrays & Jagged Arrays ---" << std::endl;
     
-    // 26. 2D Array Declaration & 27. Initialization
+    // 2D Array Declaration & Initialization
     int matrix1[2][3] = {
         {1, 2, 3},
         {4, 5, 6}
@@ -106,7 +133,7 @@ int main() {
         {3, 2, 1}
     };
     
-    // 28. Accessing 2D Array Elements
+    // Accessing 2D Array Elements
     std::cout << "Element at [1][2]: " << matrix1[1][2] << std::endl;
     
     std::cout << "\nMatrix 1:" << std::endl;
@@ -123,7 +150,7 @@ int main() {
     print2DMatrix(result, 2);
 
     std::cout << "\n--- Dynamic 2D Arrays & Jagged Arrays ---" << std::endl;
-    // 35. Dynamic 2D Arrays (and how Jagged Arrays are created)
+    // Dynamic 2D Arrays (and how Jagged Arrays are created)
     int rows = 2;
     int** dynMatrix = new int*[rows];
     // Creating a jagged array (different column sizes per row)
@@ -138,14 +165,6 @@ int main() {
     delete[] dynMatrix[0];
     delete[] dynMatrix[1];
     delete[] dynMatrix;
-
-    std::cout << "\n--- Vectors vs Arrays ---" << std::endl;
-    // 36. Arrays vs Vectors
-    std::vector<int> vec = {10, 20, 30};
-    vec.push_back(40); // Dynamic resizing
-    std::cout << "Vector elements: ";
-    for (int v : vec) std::cout << v << " ";
-    std::cout << std::endl;
 
     return 0;
 }
