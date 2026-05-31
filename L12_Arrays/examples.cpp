@@ -121,7 +121,7 @@ int main() {
     cout << "Free up an array: ";
 
 
-    std::cout << "\n--- 2D Arrays & Jagged Arrays ---" << std::endl;
+    cout << "\n--- 2D Arrays & Jagged Arrays ---" << ndl;
     
     // 2D Array Declaration & Initialization
     int matrix1[2][3] = {
@@ -134,13 +134,13 @@ int main() {
     };
     
     // Accessing 2D Array Elements
-    std::cout << "Element at [1][2]: " << matrix1[1][2] << std::endl;
+    cout << "Element at [1][2]: " << matrix1[1][2] << endl;
     
-    std::cout << "\nMatrix 1:" << std::endl;
+    cout << "\nMatrix 1:" << endl;
     print2DMatrix(matrix1, 2);
     
-    // 33. Matrix Operations (Addition)
-    std::cout << "\nMatrix Addition (Matrix1 + Matrix2):" << std::endl;
+    // Matrix Operations (Addition)
+    cout << "\nMatrix Addition (Matrix1 + Matrix2):" << endl;
     int result[2][3];
     for (int i = 0; i < 2; i++) {
         for (int j = 0; j < 3; j++) {
@@ -149,7 +149,7 @@ int main() {
     }
     print2DMatrix(result, 2);
 
-    std::cout << "\n--- Dynamic 2D Arrays & Jagged Arrays ---" << std::endl;
+    cout << "\n--- Dynamic 2D Arrays & Jagged Arrays ---" << endl;
     // Dynamic 2D Arrays (and how Jagged Arrays are created)
     int rows = 2;
     int** dynMatrix = new int*[rows];
@@ -157,9 +157,9 @@ int main() {
     dynMatrix[0] = new int[3]{1, 2, 3}; // Row 0 has 3 elements
     dynMatrix[1] = new int[2]{4, 5};    // Row 1 has 2 elements
 
-    std::cout << "Jagged Dynamic Matrix:" << std::endl;
-    std::cout << "Row 0: " << dynMatrix[0][0] << " " << dynMatrix[0][1] << " " << dynMatrix[0][2] << std::endl;
-    std::cout << "Row 1: " << dynMatrix[1][0] << " " << dynMatrix[1][1] << std::endl;
+    cout << "Jagged Dynamic Matrix:" << endl;
+    cout << "Row 0: " << dynMatrix[0][0] << " " << dynMatrix[0][1] << " " << dynMatrix[0][2] << endl;
+    cout << "Row 1: " << dynMatrix[1][0] << " " << dynMatrix[1][1] << endl;
 
     // Free dynamic 2D array memory
     delete[] dynMatrix[0];
