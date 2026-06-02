@@ -16,7 +16,7 @@ int main()
      *  the address of the first character
      */
     char* s0 = "Good afternoon";
-    char *firstChar = s0;
+    char* firstChar = s0;
     cout<<"String s0: "<<s0<<" has the size of "<<sizeof(s0)<<endl;
     cout<<"First character of s0: "<<*firstChar<<endl;
 
