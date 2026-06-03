@@ -21,24 +21,24 @@ int viTriChuoiCon(char chuoiMe[], char chuoiCon[])
 
 void xoaMotTu(char chuoi[], char tu[])
 {
-    cout<<"Nhap vao tu muon xoa: ";
-    cin.getline(tu,strlen(chuoi));
-    int viTri = viTriChuoiCon(chuoi,tu);
-    if (viTri == -1) cout<<"Khong tim thay tu nay!"<<endl;
-    else
+    cout << "Nhap vao tu muon xoa: ";
+    cin.getline(tu, strlen(chuoi));
+    int viTri = viTriChuoiCon(chuoi, tu);
+    while (viTri != -1)
     {
         for (int i = viTri; i < strlen(chuoi); i++)
         {
-            chuoi[i] = chuoi[strlen(tu)+i];
+            chuoi[i] = chuoi[strlen(tu) + i];
         }
+        viTri = viTriChuoiCon(chuoi, tu);
     }
 }
 
 int main()
 {
-    char chuoi[] = "Mot hai ba bon nam sau bay tam chin muoi";
+    char chuoi[] = "Mot hai ba bon hai nam sau bay hai tam chin muoi";
     char tu[strlen(chuoi)];
-    xoaMotTu(chuoi,tu);
-    cout<<"Chuoi sau khi xoa tu: "<<chuoi<<endl;
+    xoaMotTu(chuoi, tu);
+    cout << "Chuoi sau khi xoa tu \"" << tu << "\": " << chuoi << endl;
     return 0;
 }
