@@ -1,5 +1,6 @@
-
+#include <cstring>
 #include <iostream>
+#include <string>
 using namespace std;
 
 int main()
@@ -36,5 +37,20 @@ int main()
     // Using String class to define a sequence of characters
     string s4 = "Good evening";
     cout<<"String s5: "<<s4<<endl;
+    cout<<endl;
+
+    string str = "abcddcba";
+    char st[] = "abcddcba";
+    cout<<"Using strlen() on char array: "<<strlen(st)<<endl;
+    cout<<"Using length() on char array: Incompatible"<<endl;
+    cout<<"Using sizeof() on char array: "<<sizeof(st)<<endl;
+    cout<<"Using size on char array: Incompatible"<<endl;
+    cout<<"Using size() on char array: "<<size(st)<<endl;
+    cout<<endl;
+    cout<<"Using strlen on string class: Incompatible"<<endl;
+    cout<<"Using length() on string class: "<<str.length()<<endl;
+    cout<<"Using sizeof on string class: "<<sizeof(str)<<endl;
+    cout<<"Using size on string class: "<<str.size()<<endl;
+    cout<<"Using size() on char array: "<<size(str)<<endl;
 
 }
