@@ -1,24 +1,11 @@
 #include <iostream>
-
 using namespace std;
-void swap(int &a, int &b)
+
+void evenOrOdd(int a)
 {
-    int temp = a;
-    a = b;
-    b = temp;
+    if (a % 2 == 0) cout << "Even";
+    else cout << "Odd";
 }
-
-void sort(int a, int b, int c )
-{
-    cout<<"Enter three numbers: ";
-    cin>>a>>b>>c;
-    if (a>b) swap(a,b);
-    if (a>c) swap(a,c);
-    if (b>c) swap(b,c);
-    cout<<a<<" "<<b<<" "<<c;
-}
-
-
 int main()
 {
     return 0;
