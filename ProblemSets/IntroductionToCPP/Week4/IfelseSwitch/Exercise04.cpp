@@ -1,10 +1,10 @@
 #include <iostream>
 using namespace std;
 
-void standing(double grade)
+static void standing(double grade)
 {
     if (grade < 0 || grade > 10) cout << "Invalid grade";
-    switch ((unsigned int) grade)
+    switch (static_cast<unsigned int>(grade))
     {
         case 10:
         case 9:

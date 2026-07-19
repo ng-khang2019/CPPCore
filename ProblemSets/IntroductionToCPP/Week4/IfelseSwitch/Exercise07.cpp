@@ -42,6 +42,6 @@ void triangleType(double a, double b, double c)
 
 int main()
 {
-    triangleType(4,4,4*sqrt(2));
+    triangleType(3,4,5);
     return 0;
 }
