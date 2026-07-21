@@ -50,9 +50,19 @@ int binarySearch3(int arr[], int n, int key)
     return position;
 }
 
+int binarySearchRecursion(int arr[], int left, int right, int key)
+{
+    if (left > right) return -1;
+    int mid = left + (right - left) / 2;
+    if (arr[mid] == key) return mid;
+    if (arr[mid] > key) return binarySearchRecursion(arr, left, mid-1, key);
+    else return binarySearchRecursion(arr, mid+1, right, key);
+}
+
 int main()
 {
     int arr[] = {1,2,3,4,5,6,7,7,7,7,8,9,10,11,12,13,14,15,16};
-    cout<<binarySearch(arr, 16, 12);
+    int n = size(arr);
+    cout<<binarySearchRecursion(arr, 0,19, 12);
     return 0;
 }
