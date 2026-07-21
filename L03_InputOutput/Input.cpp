@@ -36,7 +36,7 @@ int main()
     getline(cin, myName);
 
     // cin.getline(variable,size) is used to specify the length of input string
-    // Note that getline() and cin.getline() only work with String class
+    // Note that getline() only works with String class, while cin.getline() works with char type
     cout<<"Enter your tutor name: ";
     char tutorName[50];
     cin.getline(tutorName,40);
