@@ -105,8 +105,8 @@ Monomial deriativeLevel1(Monomial m)
 
 int main()
 {
-    Monomial m1;
-    Monomial m2;
+    Monomial m1{};
+    Monomial m2{};
     inputMonomialUsingReference(m1);
     inputMonomialUsingPointer(&m2);
     printMonomial(m1);
