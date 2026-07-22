@@ -29,13 +29,13 @@ double distance(Point a, Point b)
 Point findClosestPoint(Point *points, int n)
 {
     Point root = {0.0};
-    Point closest = {0.0};
+    Point closest = points[0];
     double min = distance(root, points[0]);
     for (int i = 0; i < n; i++)
     {
         if (distance(root, points[i]) < min)
         {
-            double min = distance(root, points[i]);
+            min = distance(root, points[i]);
             closest.x = points[i].x;
             closest.y = points[i].y;
         }
