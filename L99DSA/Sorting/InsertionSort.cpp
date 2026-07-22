@@ -33,6 +33,7 @@ int main()
 {
     int arr[] = {7,4,8,9,5,3,5,7,5,2,4,5};
     int n = std::size(arr);
+    printArray(arr, n);
     insertionSort(arr, n);
     printArray(arr, n);
     return 0;
