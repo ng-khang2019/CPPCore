@@ -44,7 +44,7 @@ void printMonomial(Monomial m)
 
 Monomial addition(Monomial m1, Monomial m2)
 {
-    Monomial result = {0,0};
+    Monomial result = {};
     if (m1.exponent == m2.exponent)
     {
         result.coefficient = m1.coefficient + m2.coefficient;
@@ -57,7 +57,7 @@ Monomial addition(Monomial m1, Monomial m2)
 
 Monomial subtraction(Monomial m1, Monomial m2)
 {
-    Monomial result = {0,0};
+    Monomial result = {};
     if (m1.exponent == m2.exponent)
     {
         result.coefficient = m1.coefficient - m2.coefficient;
@@ -70,7 +70,7 @@ Monomial subtraction(Monomial m1, Monomial m2)
 
 Monomial multiplication(Monomial m1, Monomial m2)
 {
-    Monomial result = {0,0};
+    Monomial result = {};
     result.coefficient = m1.coefficient * m2.coefficient;
     result.exponent = m1.exponent + m2.exponent;
     return result;
@@ -78,7 +78,7 @@ Monomial multiplication(Monomial m1, Monomial m2)
 
 Monomial division(Monomial m1, Monomial m2)
 {
-    Monomial result = {0,0};
+    Monomial result = {};
     if (m2.coefficient == 0)
     {
         cout << "Second monomial has coefficient of zero, devision is not allowed."<<endl;
