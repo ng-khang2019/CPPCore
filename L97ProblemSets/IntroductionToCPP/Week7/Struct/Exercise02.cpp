@@ -8,7 +8,15 @@ struct Monomial
     int exponent;
 };
 
-void inputMonomial(Monomial &m)
+void inputMonomialUsingPointer(Monomial *m)
+{
+    cout << "Coefficient: ";
+    cin >> m -> coefficient;
+    cout << "Exponent: ";
+    cin >> m -> exponent;
+}
+
+void inputMonomialUsingReference(Monomial &m)
 {
     cout << "Coefficient: ";
     cin >> m.coefficient;
@@ -99,8 +107,8 @@ int main()
 {
     Monomial m1;
     Monomial m2;
-    inputMonomial(m1);
-    inputMonomial(m2);
+    inputMonomialUsingReference(m1);
+    inputMonomialUsingPointer(&m2);
     printMonomial(m1);
     printMonomial(m2);
 
