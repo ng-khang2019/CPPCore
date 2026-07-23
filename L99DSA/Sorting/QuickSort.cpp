@@ -49,6 +49,11 @@ void quickSortHoare(int arr[], int left, int right)
     int pivot = hoarePartition(arr, left, right);
 
     // Recursion for two halves
+    /* After the first partition, pivot might not be at the correct
+     * position therefore, the second partion must be from left border
+     * to pivot, and third partion must be from after the pivot to the
+     * end
+     */
     quickSortHoare(arr, left, pivot);
     quickSortHoare(arr, pivot + 1, right);
 }
