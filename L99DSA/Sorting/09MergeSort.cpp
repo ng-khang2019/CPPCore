@@ -54,9 +54,11 @@ void mergeSortTopDown(int arr[], int left, int right)
 void mergeSortBottomUp(int arr[], int left, int right)
 {
     int n = right - left +1;
+    // Merge sorted RUN, 2*RUN, 4*RUN,...
     for (int size = 1; size < n; size = size * 2) {
+        // Merge one pair of RUN, then jump to the next pair
         for (int i = left; i < right; i += 2 * size) {
-            int mid = min(i + size - 1, right );
+            int mid = i + size - 1;
             int rightEnd = min(i + 2 * size - 1, right);
             if (mid < rightEnd) merge(arr, i, mid, rightEnd);
         }
