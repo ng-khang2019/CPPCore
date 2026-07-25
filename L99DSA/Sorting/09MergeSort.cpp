@@ -40,16 +40,29 @@ void merge(int arr[], int left, int mid, int right)
     }
 }
 
-void mergeSort(int arr[], int left, int right)
+void mergeSortTopDown(int arr[], int left, int right)
 {
     if (left >= right) return;
     int mid = left + (right - left) / 2;
     // Split the array in halves until there's only one element left
-    mergeSort(arr, left, mid);
-    mergeSort(arr, mid+1, right);
+    mergeSortTopDown(arr, left, mid);
+    mergeSortTopDown(arr, mid+1, right);
     // Merge and sort
     merge(arr, left, mid, right);
 }
+
+void mergeSortBottomUp(int arr[], int left, int right)
+{
+    int n = right - left +1;
+    for (int size = 1; size < n; size = size * 2) {
+        for (int i = left; i < right; i += 2 * size) {
+            int mid = min(i + size - 1, right );
+            int rightEnd = min(i + 2 * size - 1, right);
+            if (mid < rightEnd) merge(arr, i, mid, rightEnd);
+        }
+    }
+}
+
 
 void printArray(int arr[], int n)
 {
@@ -65,7 +78,7 @@ int main()
     int arr[] = {7,4,8,9,1,3,5,6,5,2,4,10};
     int n = std::size(arr);
     printArray(arr, n);
-    mergeSort(arr, 0,n-1);
+    mergeSortBottomUp(arr, 0,n-1);
     printArray(arr, n);
     return 0;
 }
