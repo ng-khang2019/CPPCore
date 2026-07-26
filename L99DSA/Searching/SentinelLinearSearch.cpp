@@ -1,6 +1,8 @@
 #include <iostream>
 using namespace std;
 
+
+
 int sentinelLinearSearch(int arr[], int n, int key)
 {
     int i = 0;

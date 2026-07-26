@@ -3,9 +3,14 @@ using namespace std;
 
 void bubbleSort(int arr[], int n)
 {
-    bool swapped = false;
+    // Outer loop: One element is sorted after each iteration
     for (int i = 0; i < n-1;i++)
     {
+        bool swapped = false;
+        /* For each iteration:
+            -To bring the largest element to the right end, iterate from 0 to n-1-i
+            -To bring the smallest element to the left, iterate from n-1 to i
+         */
         for (int j = n-1; j > i;j--)
         {
             if (arr[j-1] > arr[j]) swap(arr[j], arr[j-1]);
