@@ -12,6 +12,7 @@ int sentinelLinearSearch(int arr[], int n, int key)
     return -1;
 }
 
+// Boolean
 bool sentinelLinearSearch1(int arr[], int n, int key)
 {
     int i = 0;
