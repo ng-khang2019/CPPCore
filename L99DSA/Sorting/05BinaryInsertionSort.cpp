@@ -13,6 +13,11 @@ void binaryInsertionSort2(int arr[], int n)
         while (left <= right)
         {
             mid = left + (right - left) / 2;
+            if (arr[mid] == temp)
+            {
+                left = mid +1;
+                break;
+            }
             if (temp < arr[mid]) right = mid -1;
             else left = mid +1;
         }
@@ -31,7 +36,7 @@ int binarySearch(int arr[], int left, int right, int key)
     while (left <= right)
     {
         int mid = left + (right - left) / 2;
-        if (arr[mid] == key) return mid;
+        if (arr[mid] == key) return mid + 1;
         if (arr[mid] > key) right = mid -1;
         else left = mid +1;
     }
