@@ -1,14 +1,11 @@
 #include <iostream>
 using namespace std;
 
-int lomutoPartition(int arr[], int left, int right)
-{
+int lomutoPartition(int arr[], int left, int right) {
     int pivot = arr[right];
     int j = left - 1;
-    for (int i = left;i < right;i++)
-    {
-        if (arr[i] < pivot)
-        {
+    for (int i = left;i < right;i++) {
+        if (arr[i] < pivot) {
             j++;
             swap(arr[i],arr[j]);
         }
@@ -18,8 +15,7 @@ int lomutoPartition(int arr[], int left, int right)
     return j;
 }
 
-void quickSortLomuto(int arr[], int left, int right)
-{
+void quickSortLomuto(int arr[], int left, int right) {
     if (left >= right) return;
     int pivot = lomutoPartition(arr, left, right);
 
@@ -28,14 +24,12 @@ void quickSortLomuto(int arr[], int left, int right)
     quickSortLomuto(arr, pivot + 1, right);
 }
 
-int hoarePartition(int arr[], int left, int right)
-{
+int hoarePartition(int arr[], int left, int right) {
     int pivot = arr[left];
     int i = left -1;
     int j = right +1;
 
-    while (true)
-    {
+    while (true) {
         do i++; while (arr[i] < pivot);
         do j--; while (arr[j] > pivot);
         if (i >= j) return j;
@@ -43,8 +37,7 @@ int hoarePartition(int arr[], int left, int right)
     }
 }
 
-void quickSortHoare(int arr[], int left, int right)
-{
+void quickSortHoare(int arr[], int left, int right) {
     if (left >= right) return;
     int pivot = hoarePartition(arr, left, right);
 

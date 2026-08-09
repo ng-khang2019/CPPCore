@@ -1,17 +1,14 @@
 #include <iostream>
 using namespace std;
 
-int linearSearch(int arr[], int n, int key)
-{
-    for (int i = 0; i < n; i++)
-    {
+int linearSearch(int arr[], int n, int key) {
+    for (int i = 0; i < n; i++) {
         if (arr[i] == key) return i;
     }
     return -1;
 }
 
-int linearSearch2(int arr[], int n, int key)
-{
+int linearSearch2(int arr[], int n, int key) {
     int index = 0;
     while (index < n && arr[index] != key) index++;
     if (index == n) return -1;
@@ -19,10 +16,8 @@ int linearSearch2(int arr[], int n, int key)
 }
 
 // Linear Search for Ordered array
-int linearSearch3(int arr[], int n, int key)
-{
-    for (int i = 0; i < n; i++)
-    {
+int linearSearch3(int arr[], int n, int key) {
+    for (int i = 0; i < n; i++) {
         if (arr[i] > key) return -1;
         if (arr[i] == key) return i;
     }

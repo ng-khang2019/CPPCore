@@ -1,13 +1,11 @@
 #include <iostream>
 using namespace std;
 
-int binarySearch(int arr[], int n, int key)
-{
+int binarySearch(int arr[], int n, int key) {
     int left = 0;
     int right = n -1;
     if (left > right) return -1;
-    for (int i = 0; i < n; i++)
-    {
+    for (int i = 0; i < n; i++) {
         int mid = (left + right) / 2;
         if (arr[mid] == key) return mid;
         if (arr[mid] > key) right = mid - 1;
@@ -15,13 +13,11 @@ int binarySearch(int arr[], int n, int key)
     }
 }
 
-bool binarySearch2(int arr[], int n, int key)
-{
+bool binarySearch2(int arr[], int n, int key) {
     int left = 0;
     int right = n -1;
     if (left > right) return -1;
-    for (int i = 0; i < n; i++)
-    {
+    for (int i = 0; i < n; i++) {
         int mid = (left + right) / 2;
         if (arr[mid] == key) return true;
         if (arr[mid] > key) right = mid - 1;
@@ -31,17 +27,14 @@ bool binarySearch2(int arr[], int n, int key)
 }
 
 // Find the first occurance
-int binarySearch3(int arr[], int n, int key)
-{
+int binarySearch3(int arr[], int n, int key) {
     int left = 0;
     int right = n-1;
     if (left > right) return -1;
     int position = -1;
-    while (left <= right)
-    {
+    while (left <= right) {
         int mid = left + (right - left) / 2;
-        if (arr[mid] == key)
-        {
+        if (arr[mid] == key) {
             position = mid;
             right = mid - 1;
         } else if (arr[mid] > key) right = mid - 1;
@@ -50,8 +43,7 @@ int binarySearch3(int arr[], int n, int key)
     return position;
 }
 
-int binarySearchRecursion(int arr[], int left, int right, int key)
-{
+int binarySearchRecursion(int arr[], int left, int right, int key) {
     if (left > right) return -1;
     int mid = left + (right - left) / 2;
     if (arr[mid] == key) return mid;
