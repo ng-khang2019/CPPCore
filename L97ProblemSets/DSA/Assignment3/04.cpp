@@ -44,8 +44,7 @@ void CreateList(LIST &L)
             L.pTail -> pNext = pNew;
             L.pTail = pNew;
         }
-    };
-
+    }
 }
 
 void Function(NODE *pHead)
