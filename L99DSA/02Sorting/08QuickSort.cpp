@@ -25,7 +25,7 @@ void quickSortLomuto(int arr[], int left, int right) {
 }
 
 int hoarePartition(int arr[], int left, int right) {
-    int pivot = arr[left];
+    int pivot = arr[left + (right - left) / 2];
     int i = left -1;
     int j = right +1;
 
