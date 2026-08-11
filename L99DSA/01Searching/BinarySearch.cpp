@@ -11,6 +11,7 @@ int binarySearch(int arr[], int n, int key) {
         if (arr[mid] > key) right = mid - 1;
         else left = mid + 1;
     }
+    return -1;
 }
 
 bool binarySearch2(int arr[], int n, int key) {
