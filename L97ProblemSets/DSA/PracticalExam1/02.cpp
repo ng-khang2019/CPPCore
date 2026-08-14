@@ -32,6 +32,32 @@ void SapXepSoChanGiamDan(int A[], int N)
     }
 }
 
+void SapXepSoChanGiamDan2(int A[], int N)
+{
+    for (int i = 1; i < N; i++)
+    {
+        if (A[i] % 2 != 0 ) continue;
+        int j = i - 1;
+        int key = A[i];
+        int lastPos = i;
+        while (j >= 0)
+        {
+            if (A[j] % 2 != 0)
+            {
+                j--;
+                continue;
+            }
+            if ( A[j] < key)
+            {
+                A[lastPos] = A[j];
+                lastPos = j;
+                j--;
+            } else break;
+        }
+        A[lastPos] = key;
+    }
+}
+
 void XuatMang(int A[], int N)
 {
     for (int i = 0; i < N; i++)
@@ -44,7 +70,7 @@ int main()
     n = Input();
 
     NhapMang(a, n);
-    SapXepSoChanGiamDan(a, n);
+    SapXepSoChanGiamDan2(a, n);
     XuatMang(a, n);
 
     return 0;
