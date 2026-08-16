@@ -31,9 +31,10 @@ public:
 
     Node* getNode(int index)
     {
+        if (index < 0 || index >= size) return nullptr;
         Node* current = pHead;
         int currentPos = 0;
-        while (current != index)
+        while (currentPos != index)
         {
             current = current->next;
             currentPos++;
@@ -43,13 +44,13 @@ public:
 
     bool setNode(int index, int value)
     {
-        if (index < 0 || index > size) return false;
+        if (index < 0 || index >= size) return false;
         if (index == 0)
         {
             pHead -> value = value;
             return true;
         }
-        if (index == size)
+        if (index == size - 1)
         {
             pTail -> value = value;
             return true;
@@ -57,7 +58,7 @@ public:
 
         int currentPos = 0;
         Node* current  = pHead;
-        while (current != index)
+        while (currentPos != index)
         {
             current = current->next;
             currentPos++;
@@ -76,12 +77,11 @@ public:
             cout << current->value << " ";
             current = current->next;
         }
-        delete current;
     }
 
     void addHead(int value)
     {
-        Node* newNode = Node(value);
+        Node* newNode = new Node(value);
         if (pHead == nullptr)
         {
             pHead = newNode;
@@ -97,8 +97,8 @@ public:
 
     void addTail(int value)
     {
-        Node* newNode = Node(value);
-        if (.pHead == nullptr)
+        Node* newNode = new Node(value);
+        if (pHead == nullptr)
         {
             pHead = newNode;
             pTail = newNode;
@@ -195,7 +195,7 @@ public:
         // Cancel if the list is empty
         if (pHead == nullptr) return;
 
-        Node* current = list.pHead;
+        Node* current = pHead;
         Node* prev = nullptr;
 
         while (current != nullptr && current->value != value)
@@ -211,15 +211,11 @@ public:
         if (current == pHead)
         {
             pHead = current -> next;
+            if (pHead == nullptr) pTail = nullptr;
         } else
         {
             prev -> next = current -> next;
-        }
-        // If tail node is the node needed removal
-        if (current -> next == nullptr)
-        {
-            prev -> next = nullptr;
-            pTail = prev;
+            if (current == pTail) pTail = prev;
         }
         delete current;
         size--;
