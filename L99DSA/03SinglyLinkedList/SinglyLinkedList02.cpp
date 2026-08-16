@@ -22,7 +22,7 @@ public:
         Node* current = pHead;
         while (current != nullptr)
         {
-            Node* next = temp -> next;
+            Node* next = current -> next;
             delete current;
             current = next;
         }
