@@ -27,6 +27,8 @@ public:
             current = next;
         }
         pHead = nullptr;
+        pTail = nullptr;
+        size = 0;
     }
 
     Node* getNode(int index)
