@@ -104,8 +104,7 @@ public:
         {
             pHead = newNode;
             pTail = newNode;
-        }
-        else
+        } else
         {
             pTail->next = newNode;
             pTail = newNode;
@@ -207,7 +206,11 @@ public:
         }
 
         // Can't find the node
-        if (current == nullptr) return;
+        if (current == nullptr)
+        {
+            cout << "No element found with such value " << endl;
+            return;
+        }
 
         // If head node is the node with the value
         if (current == pHead)
