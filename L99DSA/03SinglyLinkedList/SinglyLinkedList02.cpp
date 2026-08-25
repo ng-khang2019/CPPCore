@@ -4,25 +4,30 @@ using namespace std;
 struct Node
 {
     int value;
-    Node* next;
-    Node(int value) : value(value), next(nullptr) {}
+    Node* pNext;
+    Node() :  value(0), pNext(nullptr) {}
+    Node(int value) : value(value), pNext(nullptr) {}
 };
 
 class LinkedList
 {
-private:
+public:
     Node* pHead;
     Node* pTail;
     int size;
-public:
     LinkedList() : pHead(nullptr), pTail(nullptr), size(0) {}
 
     ~LinkedList()
     {
+        clearList();
+    }
+
+    void clearList()
+    {
         Node* current = pHead;
         while (current != nullptr)
         {
-            Node* next = current -> next;
+            Node* next = current -> pNext;
             delete current;
             current = next;
         }
@@ -38,7 +43,7 @@ public:
         int currentPos = 0;
         while (currentPos != index)
         {
-            current = current->next;
+            current = current->pNext;
             currentPos++;
         }
         return current;
@@ -62,7 +67,7 @@ public:
         Node* current  = pHead;
         while (currentPos != index)
         {
-            current = current->next;
+            current = current->pNext;
             currentPos++;
         }
         current -> value = value;
@@ -77,7 +82,7 @@ public:
         while (current != nullptr)
         {
             cout << current->value << " ";
-            current = current->next;
+            current = current->pNext;
         }
     }
 
@@ -91,11 +96,27 @@ public:
         }
         else
         {
-            newNode->next = pHead;
+            newNode->pNext = pHead;
             pHead = newNode;
         }
         size++;
     }
+
+    void addHead(Node* p)
+    {
+        if (pHead == nullptr)
+        {
+            pHead = p;
+            pTail = pHead;
+        } else
+        {
+            p->pNext = pHead;
+            pHead = p;
+        }
+        size++;
+    }
+
+
 
     void addTail(int value)
     {
@@ -106,10 +127,23 @@ public:
             pTail = newNode;
         } else
         {
-            pTail->next = newNode;
+            pTail->pNext = newNode;
             pTail = newNode;
         }
         size++;
+    }
+
+    void addTail(Node* p)
+    {
+        if (pHead == nullptr)
+        {
+            pHead = p;
+            pTail = p;
+        } else
+        {
+            pTail->pNext = p;
+            pTail = p;
+        }
     }
 
     bool insertNode(int value, int index)
@@ -133,12 +167,12 @@ public:
         while (currentPos != index)
         {
             prev = current;
-            current = current -> next;
+            current = current -> pNext;
             currentPos++;
         }
 
-        prev->next = newNode;
-        newNode->next=current;
+        prev->pNext = newNode;
+        newNode->pNext=current;
         size++;
         return true;
     }
@@ -155,8 +189,8 @@ public:
             }
             else
             {
-                Node* newHead = pHead->next;
-                oldHead->next = nullptr;
+                Node* newHead = pHead->pNext;
+                oldHead->pNext = nullptr;
                 pHead = newHead;
             }
             delete oldHead;
@@ -177,12 +211,12 @@ public:
             else
             {
                 Node* prevTail = pHead;
-                while (prevTail->next != pTail)
+                while (prevTail->pNext != pTail)
                 {
-                    prevTail = prevTail->next;
+                    prevTail = prevTail->pNext;
                 }
 
-                prevTail->next = nullptr;
+                prevTail->pNext = nullptr;
                 pTail = prevTail;
             }
 
@@ -202,7 +236,7 @@ public:
         while (current != nullptr && current->value != value)
         {
             prev = current;
-            current = current->next;
+            current = current->pNext;
         }
 
         // Can't find the node
@@ -215,11 +249,11 @@ public:
         // If head node is the node with the value
         if (current == pHead)
         {
-            pHead = current -> next;
+            pHead = current -> pNext;
             if (pHead == nullptr) pTail = nullptr;
         } else
         {
-            prev -> next = current -> next;
+            prev -> pNext = current -> pNext;
             if (current == pTail) pTail = prev;
         }
         delete current;
@@ -238,11 +272,122 @@ public:
         pTail = pHead;
         while (current != nullptr)
         {
-            next = current->next;
-            current->next = prev;
+            next = current->pNext;
+            current->pNext = prev;
             prev = current;
             current = next;
         }
         pHead = prev;
     }
+
+    int lookUpValue(int value)
+    {
+        Node* current = pHead;
+        int index = 0;
+        while (current != nullptr)
+        {
+            if (current->value == value) return index;
+            current = current->pNext;
+            index++;
+        }
+        return -1;
+    }
 };
+
+class sortList
+{
+private:
+    Node* seperateHead(LinkedList &list)
+    {
+        if (list.pHead == nullptr) return nullptr;
+        Node* splitHead = list.pHead;
+        list.pHead = list.pHead->pNext;
+        list.size--;
+        if (list.pHead == nullptr) list.pTail = nullptr;
+        splitHead->pNext = nullptr;
+        return splitHead;
+    }
+    void partition(LinkedList &list, LinkedList &list1, LinkedList &listE, LinkedList &list2)
+    {
+        if (list.pHead == nullptr) return;
+        // Find the middle node
+        Node* slow = list.pHead;
+        Node* fast = list.pHead;
+        while (fast != nullptr && fast->pNext != nullptr)
+        {
+            slow = slow->pNext;
+            fast = fast->pNext->pNext;
+        }
+
+        // Swap the middle node and the head
+        int temp = list.pHead->value;
+        list.pHead->value = slow->value;
+        slow->value = temp;
+
+        // Pick the head node as the pivot
+        Node* pivot = seperateHead(list);
+        listE.addTail(pivot);
+        int pivotValue = pivot->value;
+
+        // Partitioning
+        Node* current;
+        while (list.pHead != nullptr)
+        {
+            current = seperateHead(list);
+            if (current->value > pivotValue) {
+                list2.addTail(current);
+            }  else if (current->value == pivotValue)
+            {
+                listE.addTail(current);
+            } else
+            {
+                list1.addTail(current);
+            }
+        }
+    }
+public:
+    void selectionSort(LinkedList &list)
+    {
+        Node* current = list.pHead;
+        if (current == nullptr || current->pNext == nullptr) return;n;
+        while (current != nullptr)
+        {
+            Node* min = current;
+            Node* next = current->pNext;
+            while (next != nullptr)
+            {
+                if (next->value < min->value) min = next;
+                next = next->pNext;
+            }
+            if (min != current) swap(min->value,current->value);
+            current = current->pNext;
+        }
+    }
+
+    void quickSort(LinkedList &list)
+    {
+        if (list.pHead == nullptr || list.pHead == list.pTail) return;
+        LinkedList list1, list2, listE;
+        partition(list,list1,listE,list2);
+        quickSort(list1);
+        quickSort(list2);
+        // Merging
+        Node* current;
+        while (list1.pHead != nullptr)
+        {
+            current = seperateHead(list1);
+            list.addTail(current);
+        }
+        while (listE.pHead != nullptr)
+        {
+            current = seperateHead(listE);
+            list.addTail(current);
+        }
+        while (list2.pHead != nullptr)
+        {
+            current = seperateHead(list2);
+            list.addTail(current);
+        }
+    }
+};
+
