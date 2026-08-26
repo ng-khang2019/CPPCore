@@ -362,7 +362,6 @@ private:
 
     void merge(LinkedList &list, LinkedList &list1, LinkedList &list2)
     {
-        list.clearList();
         while (list1.pHead != nullptr && list2.pHead != nullptr)
         {
             if (list1.pHead->value <= list2.pHead->value)
