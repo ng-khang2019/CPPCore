@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 using namespace std;
 
 struct Node
@@ -385,7 +386,7 @@ public:
     void selectionSort(LinkedList &list)
     {
         Node* current = list.pHead;
-        if (current == nullptr || current->pNext == nullptr) return;n;
+        if (current == nullptr || current->pNext == nullptr) return;
         while (current != nullptr)
         {
             Node* min = current;
@@ -437,3 +438,45 @@ public:
     }
 };
 
+void printList(LinkedList &list)
+{
+    list.print();
+    cout << endl;
+}
+
+void runTest(string name, vector<int> data) {
+    cout << "=== " << name << " ===\n";
+    LinkedList list;
+
+    // Đổ dữ liệu vào list
+    for (int x : data) {
+        list.addTail(new Node(x));
+    }
+
+    cout << "Truoc: ";
+    printList(list);
+
+    sortList sorter;
+    sorter.mergeSort(list);
+
+    cout << "Sau:   ";
+    printList(list);
+    cout << "---------------------\n";
+}
+
+int main() {
+    // 1. Mảng ngẫu nhiên (Lấy đúng ví dụ kinh điển của Merge Sort)
+    runTest("Test 1: Mang ngau nhien", {38, 27, 43, 3, 9, 82, 10});
+
+    // 2. Mảng đảo ngược
+    runTest("Test 2: Mang dao nguoc", {9, 8, 7, 6, 5, 4, 3, 2, 1});
+
+    // 3. Mảng toàn số trùng lặp
+    runTest("Test 3: Mang toan so trung lap", {7, 7, 7, 7, 7, 7});
+
+    // 4. Mảng cực ngắn (Edge cases)
+    runTest("Test 4: Mang chi co 1 phan tu", {42});
+    runTest("Test 5: Mang rong", {});
+
+    return 0;
+}
