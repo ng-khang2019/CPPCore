@@ -116,8 +116,6 @@ public:
         size++;
     }
 
-
-
     void addTail(int value)
     {
         Node* newNode = new Node(value);
@@ -144,6 +142,7 @@ public:
             pTail->pNext = p;
             pTail = p;
         }
+        size++;
     }
 
     bool insertNode(int value, int index)
@@ -345,6 +344,44 @@ private:
             }
         }
     }
+
+    void mergeSplit(LinkedList &list, LinkedList &list1, LinkedList &list2)
+    {
+        Node* current;
+        while (list.pHead != nullptr)
+        {
+            current = seperateHead(list);
+            list1.addTail(current);
+            if (list.pHead != nullptr)
+            {
+                current = seperateHead(list);
+                list2.addTail(current);
+            }
+        }
+    }
+
+    void merge(LinkedList &list, LinkedList &list1, LinkedList &list2)
+    {
+        list.clearList();
+        while (list1.pHead != nullptr && list2.pHead != nullptr)
+        {
+            if (list1.pHead->value <= list2.pHead->value)
+            {
+                list.addTail(seperateHead(list1));
+            } else
+            {
+                list.addTail(seperateHead(list2));
+            }
+        }
+        while (list1.pHead != nullptr)
+        {
+            list.addTail(seperateHead(list1));
+        }
+        while (list2.pHead != nullptr)
+        {
+            list.addTail(seperateHead(list2));
+        }
+    }
 public:
     void selectionSort(LinkedList &list)
     {
@@ -388,6 +425,16 @@ public:
             current = seperateHead(list2);
             list.addTail(current);
         }
+    }
+
+    void mergeSort(LinkedList &list)
+    {
+        if (list.pHead == nullptr || (list.pHead == list.pTail)) return;
+        LinkedList list1, list2;
+        mergeSplit(list,list1,list2);
+        mergeSort(list1);
+        mergeSort(list2);
+        merge(list,list1,list2);
     }
 };
 
